@@ -143,7 +143,7 @@ sudo docker exec -it php-5-6-cli /bin/sh
 
 # Disclaimer
 
-This Apache2 + PHP 5.6 build environment should ***NOT*** be used anywhere near a ***production*** environment. This build is for showcasing legacy systems that simple would not run in modern environments & as such it is littered with security holes and exploitation's.
+This PHP 5.6 CLI build environment should ***NOT*** be used anywhere near a ***production*** environment. This build is for showcasing legacy systems that simple would not run in modern environments & as such it is littered with security holes and exploitation's.
 
 [^docker_pull_cmd_note]: Use `docker pull ewc2020/web:php-5.6-cli-latest` to get a copy of the image.
 
