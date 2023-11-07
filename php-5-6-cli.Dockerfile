@@ -1,4 +1,4 @@
-FROM php:5.6-cli-alpine as build-56-cli
+FROM php:5.6-cli-alpine as build-php-56-cli
 
 # Set some image labels
 LABEL evilwizardcreations.image.authors="evil.wizard95@googlemail.com" \
@@ -29,14 +29,13 @@ RUN set -ex; \
 
 # Install some php extensions from the docker built source.
 RUN docker-php-ext-install gettext mysqli pdo_mysql zip
-RUN pecl channel-update pecl.php.net && \
-    pecl install --offline /tmp/yaml-1.3.0.tgz && \
+RUN pecl install --offline /tmp/yaml-1.3.0.tgz && \
     docker-php-ext-enable yaml && \
     apk del pcre-dev ${PHPIZE_DEPS} && \
     rm /tmp/yaml-1.3.0.tgz
 
 # A test build to play with while getting it all working
-FROM php:5.6-cli-alpine as build-56-cli-test
+FROM php:5.6-cli-alpine as build-php-56-cli-test
 
 # Set some image labels
 LABEL evilwizardcreations.image.authors="evil.wizard95@googlemail.com" \
@@ -67,8 +66,7 @@ RUN set -ex; \
 
 # Install some php extensions from the docker built source.
 RUN docker-php-ext-install gettext mysqli pdo_mysql zip
-RUN pecl channel-update pecl.php.net && \
-    pecl install --offline /tmp/yaml-1.3.0.tgz && \
+RUN pecl install --offline /tmp/yaml-1.3.0.tgz && \
     docker-php-ext-enable yaml && \
     apk del pcre-dev ${PHPIZE_DEPS} && \
     rm /tmp/yaml-1.3.0.tgz
