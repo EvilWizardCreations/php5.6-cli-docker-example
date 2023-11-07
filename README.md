@@ -64,7 +64,7 @@ sudo docker build \
     --target build-php-5-6-cli \
     --build-arg APP_ENV=local \
     --no-cache \
-    -t php-7.2-fpm:latest \
+    -t php-5.6-fpm:latest \
     .
 ```
 
