@@ -10,17 +10,16 @@ services:
     restart: unless-stopped
     image: ${PHP56_CLI_DOCKER_IMAGE}:${PHP56_CLI_DOCKER_IMAGE_TAG}
     environment:
-        - NPM_VERSION=${NPM_VERSION}
         - APP_ENV=${APP_ENV}
     working_dir: /var/www
     volumes:
       - ./public_html:/var/www/html
-      - ./docker-files/php/local.ini:/usr/local/etc/php.ini
+      - ./docker-files/php/56.local.ini:/usr/local/etc/php.ini
     networks:
-      - webapp_network
+      - web-app-network
 
 # Custom network for composed containers to communicate on
 networks:
-  webapp_network:
+  web-app-network:
     driver: bridge
 
