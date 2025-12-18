@@ -17,7 +17,9 @@ COPY --from=composer:1.7.1 /usr/bin/composer /usr/bin/composer
 # Install some extra stuff
 RUN set -ex; \
     apk update; \
-    apk add libxml2-dev \
+    apk add libxslt \ 
+      libxslt-dev \
+      libxml2-dev \
       libzip-dev \
       yaml \
       yaml-dev \
@@ -32,7 +34,7 @@ RUN set -ex; \
       autoconf
 
 # Install some php extensions from the docker built source.
-RUN docker-php-ext-install gettext mysqli pdo_mysql zip
+RUN docker-php-ext-install gettext mysqli pdo_mysql zip xml xsl
 RUN pecl install --offline /tmp/yaml-1.3.0.tgz && \
     docker-php-ext-enable yaml && \
     apk del pcre-dev ${PHPIZE_DEPS} && \
@@ -58,7 +60,9 @@ COPY --from=composer:1.7.1 /usr/bin/composer /usr/bin/composer
 # Install some extra stuff
 RUN set -ex; \
     apk update; \
-    apk add libxml2-dev \
+    apk add libxslt \ 
+      libxslt-dev \
+      libxml2-dev \
       libzip-dev \
       yaml \
       yaml-dev \
@@ -73,7 +77,7 @@ RUN set -ex; \
       autoconf
 
 # Install some php extensions from the docker built source.
-RUN docker-php-ext-install gettext mysqli pdo_mysql zip
+RUN docker-php-ext-install gettext mysqli pdo_mysql zip xml xsl
 RUN pecl install --offline /tmp/yaml-1.3.0.tgz && \
     docker-php-ext-enable yaml && \
     apk del pcre-dev ${PHPIZE_DEPS} && \
